@@ -1,0 +1,9 @@
+ $key = "dxknjnf453nnxkklxko66br44lotij";
+
+         $payload = array(
+                   "site" => "wordnote.khanmdsagar.net",
+                   "user_email" => $email,
+                   "iat" => time(),
+                   "exp" => time() + 3600
+           );
+$jwt = JWT::encode($payload, $key);

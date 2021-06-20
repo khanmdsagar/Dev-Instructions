@@ -1,0 +1,8 @@
+1. composer create-project --prefer-dist laravel/lumen MyDic
+2. php -S localhost:8000 -t public
+3. composer require flipbox/lumen-generator
+
+Inside your bootstrap/app.php file, add:
+$app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
+
+5. composer require firebase/php-jwt

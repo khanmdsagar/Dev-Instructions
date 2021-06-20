@@ -1,0 +1,67 @@
+1. npm install -g @vue/cli
+2. npm update -g @vue/cli
+	npm i -g @vue/cli
+3. vue create hello-world
+4. vue ui
+
+email pattern : var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+.htaccess
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+npm run serve -- --port 8000
+
+npm install vue-cli
+vue init webpack-simple projrctname
+npm install
+npm install firebase@4.3.1
+npm install vuefire@1.4.3
+code . && npm run dev 
+
+npm install --save vue-router@2.1.0
+npm install --save-dev url-loader
+npm install file-loader --save-dev
+    {
+        test: /\.mp3$/,
+        loader: 'file-loader'
+    },
+
+ var firebaseConfig = {
+    apiKey: "AIzaSyBOyFOmi9cJKyt_p0OjJysACb8_1f7ezIw",
+    authDomain: "green-tech-restaurant.firebaseapp.com",
+    databaseURL: "https://green-tech-restaurant.firebaseio.com",
+    projectId: "green-tech-restaurant",
+    storageBucket: "green-tech-restaurant.appspot.com",
+    messagingSenderId: "581057756047",
+    appId: "1:581057756047:web:da941c83b974ec28e469fa",
+    measurementId: "G-F86KMR3SLH"
+  };
+
+
+Router=>...............................
+import VueRouter from 'vue-router'
+import Home from './home.vue'
+Vue.use(VueRouter)
+
+const routes = [
+  {path: '/', component: Home},
+]
+
+const router = new VueRouter({
+  mode: 'history',
+  routes,
+})
+
+new Vue({
+  el: '#app',
+  router,
+  render: h => h(App)
+})
+......................................

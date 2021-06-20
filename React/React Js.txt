@@ -1,0 +1,14 @@
+npm install -g npm@latest  
+npm install node
+npm install -g yarn
+npx create-react-app appname
+cd firstapp
+yarn start
+
+
+1. npx create-react-app todo
+2. npm cache clean --force
+	*npm config set fetch-retry-maxtimeout 6000 -g
+3. npm uninstall -g create-react-app
+4. npm install
+5. npm start

@@ -1,0 +1,105 @@
+1. flutter create my_app
+2. flutter run
+3. .\emulator.exe -avd "Pixel_XL_Edited_API_28"
+
+What i have learnt->
+1. How to add app bar
+2. How to add floating action button
+3. How to add colors
+4. How to add fontfamily
+
+debugShowCheckedModeBanner: false,
+
+Beginner code->
+Scaffold(
+
+    appBar: AppBar(
+      automaticallyImplyLeading: false,
+      title: Text("My App", style: TextStyle(fontFamily: 'Ubuntu'),),
+      backgroundColor: Colors.red[600],
+    ),
+
+    body: Center(
+      child: Text(
+        "Hello World",
+        style: TextStyle(
+          fontSize: 20,
+          color: Colors.grey[400],
+          fontWeight: FontWeight.bold,
+          fontFamily: 'Ubuntu'
+        ),
+        ),
+    ),
+
+    floatingActionButton: FloatingActionButton(
+      child: Icon(Icons.add),
+      backgroundColor: Colors.red[600],
+      onPressed: () {},
+    ),
+  )
+
+//Floating action button
+ floatingActionButton: FloatingActionButton.extended(
+      icon: Icon(Icons.message),
+      backgroundColor: Colors.red[600],
+      label: Text("Message"),
+      onPressed: () {},
+      elevation: 0,
+      highlightElevation: 1,
+    )
+
+//Network image
+Center(
+      child: Image(
+        image: NetworkImage("https://www.shutterstock.com/blog/wp-content/uploads/sites/5/2018/06/Halftone-Texture-Color-Effect_Before.gif")
+      ),
+  )
+
+//Asset Image
+Image(
+        image: AssetImage("images/startup-life.jpg")
+        )
+
+//icon
+Icon(
+        Icons.work,
+        size: 100,
+        color: Colors.lightBlue,
+      )
+
+//icon button
+FlatButton.icon(
+        onPressed: () {}, 
+        icon: Icon(
+          Icons.mail,
+          color: Colors.white,
+        ),
+        color: Colors.lightGreen,
+        label: Text("Send", style: TextStyle(color: Colors.white),),
+        )
+
+
+    //bottom navigation
+    bottomNavigationBar: BottomNavigationBar(
+
+    currentIndex: _currentIndex,
+
+    onTap: (index){
+      setState(() {
+        _currentIndex = index;
+      });
+    },
+
+    items: [
+      BottomNavigationBarItem(icon: Icon(Icons.home), title: Text("Home")),
+      BottomNavigationBarItem(icon: Icon(Icons.add), title: Text("Add")),
+      BottomNavigationBarItem(icon: Icon(Icons.face), title: Text("Profile"))
+    ]),
+
+
+1. Routing ->
+routes: {
+    '/home': (context) => Home(),
+  },
+
+Navigator.pushNamed(context, '/home');

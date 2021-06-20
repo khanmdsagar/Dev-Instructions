@@ -1,0 +1,23 @@
+1. pip3 install virtualenv
+2. virtualenv env
+3. cd env\Scripts\
+4. activate
+5. pip3 install flask flask-sqlalchemy
+6. python app.py
+7. Creating database -> db.create_all() 
+8. Reference -> tutorials point flask
+9. pip install Pillow
+10.pip install flask-mysql
+
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def index():
+    return render_template('index.html', allItems = items.query.all())
+
+
+if __name__ == "__main__":
+    app.run(debug = True)

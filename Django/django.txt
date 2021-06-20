@@ -1,0 +1,32 @@
+1. django-admin (to view sub command)
+2. pip install virtualenvwrapper-win
+
+3. mkvirtualenv env
+	workon env
+
+4. pip install django
+5. django-admin startproject communityBlog
+
+6. python manage.py runserver
+
+7. Color code (#19865C-green) (#6DDCBD-cyan) (#2E3B39-black) 
+(#AA2247-marun)
+
+8. python manage.py startapp userSite
+
+9. Create urls.py
+   imports ->
+	a. from django.http import HttpResponse
+		def home(request):
+		    return HttpResponse("Hello World")
+
+	b. from . import views
+		urlpatterns = [
+    		   path('', views.home, name="usersite-home"),
+		]
+
+	c. from django.urls import path, include
+		urlpatterns = [
+   		   path('', include('userSite.urls')),
+		]
+		

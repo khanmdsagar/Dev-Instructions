@@ -1,0 +1,218 @@
+Commands ->
+1. composer create-project --prefer-dist laravel/laravel blog
+
+2. php artisan serve
+3. controller => php artisan make:controller homeController 
+
+4. migration => php artisan make:migration filename (php artisan migrate)
+	roll back -> php artisan migrate:rollback
+	migrate -> php artisan migrate
+
+5. model with migration => php artisan make:model crud -m
+
+  For Lumen ->
+  * Lumen generator -> composer require flipbox/lumen-generator
+  * php -S localhost:8000 -t public
+  * php artisan key:generate
+  * composer require firebase/php-jwt
+     use \Firebase\JWT\JWT;
+
+
+6. Socialite -> 
+    * composer require laravel/socialite
+    * Laravel\Socialite\SocialiteServiceProvider::class,
+    * 'Socialite' =>  Laravel\Socialite\Facades\Socialite::class,
+  
+    * 'github' => [
+        'client_id' => 'be19fed2f85e98bc9853',
+        'client_secret' => '9a03943daa7d57b9c8ccf3d4a0dd778af7d94b37',
+        'redirect' => 'http://127.0.0.1:8000/loginCallback',
+      ], 
+
+    *  function callGithub(){
+
+        $githubService = Socialite::driver('github')->redirect();
+        return $githubService;
+
+    }
+
+7. Middle ware -> php artisan make:Middleware loginMiddleware
+8. php artisan route:cache
+   php artisan cache:clear
+   php artisan config:cache
+   php artisan view:clear
+   php artisan optimize
+
+9. php artisan storage:link
+10. Intervention image -> 
+	* composer require intervention/image
+	* Intervention\Image\ImageServiceProvider::class
+	* 'Image' => Intervention\Image\Facades\Image::class
+
+11. Scaffolding => composer require laravel/ui:^2.4
+		=>
+
+
+Tipocs ->
+1. Installation and run
+2. MVC concept
+3. Essential php artisan command
+4. Routing (Controller + View + href param + group)
+5. Controller (Single action + Resource + Custom)
+6. Blade templating engine and controll
+7. Subview
+8. Template inheritanc
+  9. First Laravel Project (static site) 
+10. Migration and operations
+11. RAW SQL CRUD + AJAX
+12. Query Builder
+13. Eloquent ORM
+14. Model uses
+15. Database Seeder Class 
+16. File Upload
+17. Github Login
+
+=> validation and security
+1. blank input
+2. email
+3. white space
+4. tag
+5. value lenght
+6. string pattern
+
+
+axios=>
+1. Post request
+axios.post('/user', {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+
+
+Eloquent ORM ->
+
+1. Insert Data
+
+    function insertData(Request $request){
+       $name   = $request->input('name');
+       $roll   = $request->input('roll');
+       $class  = $request->input('class');
+
+       //DB::table('students')
+       $result = crud::insert(['name'=>$name, 'roll'=> $roll, 'class'=>$class]);
+
+       if($request == true){
+           return "Inserted";
+       }
+       else{
+           return "Failed";
+       }
+
+    }
+
+
+
+2. Select Data
+
+    function home(){
+        $selectData = crud::orderBy('id', 'DESC')->get();
+        return view('home',['collection'=>$selectData]); 
+    }
+
+
+
+3. Update Data vai form
+
+    $name   = $request->name;
+        $roll   = $request->roll;
+        $class  = $request->class;
+ 
+        //DB::table('students')
+        $result = mainModel::where('id', $id)->update(['name'=> $name, 'roll'=> $roll, 'class'=> $class]);
+ 
+       
+        if($result == true){
+            return redirect('/home')->with('status', 'Updated Successfully');
+        }
+        else{
+            return redirect('/home')->with('status', 'Update Failed');
+        }
+
+
+
+4. Delete Data
+
+   $result = mainModel::where('id', $id)->delete();
+ 
+        if($result == true){
+            return redirect('/home')->with('status', 'Deleted Successfully');
+        }
+        else{
+            return redirect('/home')->with('status', 'Delete Failed');
+        }
+     
+
+
+5. Search Data
+
+ function searchData($name){
+    
+      $result = peoples::orderBy('name', 'ASC')
+        ->where('name', 'LIKE', "%{$name}%")
+        ->get();
+      return $result;
+
+    }
+
+6. Migration
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreatePostTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('post', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('title');
+
+            $table->longText('description');
+            $table->string('thumbnail');
+
+            $table->string('slug');
+            $table->string('status');
+            $table->date('date');
+
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('post', function (Blueprint $table) {
+            $table->dropForeign(['category_id']);
+        });
+        Schema::dropIfExists('post');
+    }
+}

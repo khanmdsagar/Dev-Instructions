@@ -1,0 +1,89 @@
+import 'dart:convert';
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import 'package:http/http.dart' as http;
+
+void main() {
+  runApp(MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MyApp()
+  ));
+}
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+  var data;
+
+  Future getData() async {
+    var response = await http.get("https://jsonplaceholder.typicode.com/photos");
+
+    setState(() {
+      var decode = json.decode(response.body);
+      data = decode;
+
+      //print(data);
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    this.getData();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    FlutterStatusbarcolor.setStatusBarColor(Color(0xFFFFFFFF));
+    FlutterStatusbarcolor.setNavigationBarColor(Color(0xFFffffff));
+
+    FlutterStatusbarcolor.setStatusBarWhiteForeground(false);
+    FlutterStatusbarcolor.setNavigationBarWhiteForeground(false);
+
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: SvgPicture.asset("assets/images/google.svg", height: 35, width: 35),
+          backgroundColor: Colors.white,
+          centerTitle: true,
+          elevation: 0.4,
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: GridView.count(
+            crossAxisCount: 2,
+            children: List.generate(data.length, (index){
+              return Container(
+                child: Card(
+                  elevation: 0.2,
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 120,
+                        child: Image.network(data[index]['url']),
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(15.0),
+                        child: Text(data[index]['title']),
+                      )
+                    ],
+                  ),
+                ),
+              );
+            }),
+          ),
+        )
+      ),
+    );
+  }
+}

@@ -1,0 +1,2 @@
+1. react-native run-android
+2. npm i react-native-router-flux --save

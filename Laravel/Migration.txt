@@ -1,0 +1,21 @@
+Schema::create('post', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('title');
+
+            $table->longText('description');
+            $table->string('thumbnail');
+
+            $table->string('slug');
+            $table->string('status');
+            $table->date('date');
+            $table->integer('count')->default('0');
+
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
+});
+
+
+Schema::table('post', function (Blueprint $table) {
+            $table->dropForeign(['category_id']);
+        });
+Schema::dropIfExists('post');

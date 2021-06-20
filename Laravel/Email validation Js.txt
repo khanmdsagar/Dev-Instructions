@@ -1,0 +1,5 @@
+var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+else if(!myemail.match(pattern)){
+        $toast("Email is not valid");
+}
