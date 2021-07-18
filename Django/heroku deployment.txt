@@ -1,0 +1,2 @@
+https://shopmanager123.herokuapp.com/ | https://git.heroku.com/shopmanager123.git
+waitress-serve --port=8000 myproject.wsgi:application

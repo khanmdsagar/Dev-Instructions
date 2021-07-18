@@ -1,0 +1,4 @@
+Folder nuxt
+1. npm i create-nuxt-app
+2. npx create-nuxt-app nuxt
+3. npm run dev
