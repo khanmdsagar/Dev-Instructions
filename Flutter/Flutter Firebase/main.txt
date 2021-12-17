@@ -1,0 +1,63 @@
+import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+void main(){
+  runApp(MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+
+  Future getData() async {
+    Firestore firestore = Firestore.instance;
+    QuerySnapshot querySnapshot = await firestore.collection("peoples").getDocuments();
+    return querySnapshot.documents;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Phonebook", style: TextStyle(fontWeight: FontWeight.normal)),
+        elevation: 1,
+      ),
+      body: FutureBuilder(
+        future: getData(),
+        builder: (context, snapshot){
+          return ListView.builder(
+            itemCount: snapshot.data.length,
+            itemBuilder: (context, index){
+              DocumentSnapshot data = snapshot.data[index];
+              return Card(
+                child: ListTile(
+                  leading: Image.network(data["image"]),
+                  title: Text(data["name"]),
+                  subtitle: Text(data['number']),
+                ),
+              );
+            },
+          );
+        },
+      ),
+    );
+  }
+}

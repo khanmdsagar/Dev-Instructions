@@ -1,0 +1,1 @@
+child: Image(image: ResizeImage(AssetImage(img), width: 60, height: 60))
