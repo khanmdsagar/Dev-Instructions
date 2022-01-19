@@ -1,0 +1,24 @@
+* Packages ->
+
+npm i express
+npm i express-rate-limit
+npm i helmet
+npm i dotenv
+npm i cors
+npm i mysql
+npm i body-parser
+npm i hpp
+npm i nodemon
+
+
+* folder structure ->
+
+npm init (package.json)
+index.js (root)
+app.js   (root)
+.env
+
+src
+   -> controllers
+   -> models
+   -> routes

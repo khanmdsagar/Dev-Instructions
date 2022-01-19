@@ -1,0 +1,43 @@
+Links->
+https://github.com/livewire/turbolinks
+https://github.com/bitfumes/laravel-livewire-full-course
+
+npm install
+npm install --save turbolinks
+
+const Turbolinks = require("turbolinks")
+Turbolinks.start()
+
+npm run dev
+{{asset('js/app.js')}}
+
+
+php artisan livewire:make Dashboard
+
+use App\Http\livewire\HomePage;
+Route::get('/', HomePage::class);
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Store</title>
+    @livewireStyles
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/cart">Cart</a>
+        <a href="/search">Search</a>
+    </div>
+    <div class="container">
+        {{$slot}}
+    </div>
+
+    @livewireScripts
+    <script src="{{asset('js/app.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false" data-turbo-eval="false"></script>
+</body>
+</html>
