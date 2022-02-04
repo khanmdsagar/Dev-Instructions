@@ -1,0 +1,27 @@
+mkdir -p /var/www/html/starmindtechnologies.com/public_html
+
+chown -R $USER:$USER /var/www/html/starmindtechnologies.com/public_html
+
+chmod -R 755 /var/www/html
+
+sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/starmindtechnologies.com.conf
+
+nano /etc/apache2/sites-available/starmindtechnologies.com.conf
+
+
+<VirtualHost *:80>
+ServerAdmin root@starmindtechnologies.com
+ServerName starmindtechnologies.com
+ServerAlias www.starmindtechnologies.com
+DocumentRoot /var/www/html/starmindtechnologies.com/public_html
+ErrorLog ${APACHE_LOG_DIR}/error.log
+CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+
+sudo a2ensite starmindtechnologies.com.conf
+
+systemctl reload apache2
+
+a2dissite 000-default.conf
+

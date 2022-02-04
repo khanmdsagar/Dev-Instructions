@@ -4,6 +4,7 @@
 3. vue create hello-world
 4. vue ui
 
+................................................................
 email pattern : var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
 .htaccess
@@ -15,6 +16,9 @@ email pattern : var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /index.html [L]
 </IfModule>
+
+................................................................
+vue 2=>
 
 npm run serve -- --port 8000
 

@@ -1,0 +1,31 @@
+        <Button
+            android:layout_marginTop="20dp"
+            style="?android:attr/borderlessButtonStyle"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:background="@drawable/button_background"
+            android:text="Submit"
+            android:textSize="20sp"
+            android:textAllCaps="false"
+            android:layout_width="250dp"
+            android:layout_height="55dp"/>
+
+<?xml version="1.0" encoding="utf-8"?>
+<shape android:shape="rectangle"  xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="5dp"/>
+    <solid android:color="@color/purple_200"/>
+</shape>
+
+
+        <EditText
+            android:hint="Enter email address"
+            android:padding="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/input_background"
+            android:layout_width="250dp"
+            android:layout_height="55dp"/>
+
+<?xml version="1.0" encoding="utf-8"?>
+<shape android:shape="rectangle" xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="5dp"/>
+    <stroke android:width="2dp" android:color="@color/purple_200"/>
+</shape>
