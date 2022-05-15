@@ -1,0 +1,18 @@
+
+import os
+
+siteName = input("Enter site name: ")
+
+os.system("mkdir " + siteName)
+os.system("touch /etc/apache2/sites-available/" + siteName + ".conf")
+
+siteConfig = "<VirtualHost *:80>"+"\n"+"ServerAdmin root@"+siteName+"\n"+"ServerName "+siteNa>
+
+confFile = open("/etc/apache2/sites-available/" + siteName + ".conf", "a")
+confFile.write(siteConfig)
+confFile.close()
+
+output = os.system("a2ensite " +  siteName + ".conf")
+os.system("systemctl reload apache2")
+
+print(output)

@@ -1,25 +1,25 @@
-mkdir -p /var/www/html/starmindtechnologies.com/public_html
+mkdir -p /var/www/khanmicrosystem.com/public_html
 
-chown -R $USER:$USER /var/www/html/starmindtechnologies.com/public_html
+	opt - chown -R $USER:$USER /var/www/html/khanmicrosystem.com/public_html
 
-chmod -R 755 /var/www/html
+	opt - chmod -R 755 /var/www/html
 
-sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/starmindtechnologies.com.conf
+cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/khanmicrosystem.com.conf
 
-nano /etc/apache2/sites-available/starmindtechnologies.com.conf
+nano /etc/apache2/sites-available/khanmicrosystem.com.conf
 
 
 <VirtualHost *:80>
-ServerAdmin root@starmindtechnologies.com
-ServerName starmindtechnologies.com
-ServerAlias www.starmindtechnologies.com
-DocumentRoot /var/www/html/starmindtechnologies.com/public_html
-ErrorLog ${APACHE_LOG_DIR}/error.log
-CustomLog ${APACHE_LOG_DIR}/access.log combined
+	ServerAdmin root@khanmicrosystem.com
+	ServerName khanmicrosystem.com
+	ServerAlias www.khanmicrosystem.com
+	DocumentRoot /var/www/html/khanmicrosystem.com/public_html
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 
 
-sudo a2ensite starmindtechnologies.com.conf
+sudo a2ensite khanmicrosystem.com.conf
 
 systemctl reload apache2
 

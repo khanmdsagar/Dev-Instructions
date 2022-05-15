@@ -216,3 +216,8 @@ class CreatePostTable extends Migration
         Schema::dropIfExists('post');
     }
 }
+
+7. App Service Provider
+View::composer('*', function ($view) {
+            $view->with("settings", DB::table('settings')->get());
+        });

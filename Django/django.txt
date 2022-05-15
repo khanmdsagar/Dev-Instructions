@@ -1,10 +1,11 @@
 1. django-admin (to view sub command)
 2. pip install virtualenvwrapper-win
 
-3. mkvirtualenv env
-	workon env
+3. mkvirtualenv env or py -m venv env
+	workon env or env\Scripts\activate.bat
+	source myproject/bin/activate
 
-4. pip install django
+4. pip install django or py -m pip install Django
 5. django-admin startproject communityBlog
 
 6. python manage.py runserver

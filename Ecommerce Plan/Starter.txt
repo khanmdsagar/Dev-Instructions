@@ -1,0 +1,29 @@
+Product table=>
+
+1. Product name
+2. Buying price
+3. Selling price
+4. Thumbnail
+5. Description
+6. Slug
+7. Status (active or not 1 or 0)
+8. Variation status (1 or 0)
+9. Date
+10. View count
+11. Priority
+
+Settings=>
+1. Website name
+2. Admin email
+3. Admin Password
+4. Banner image
+5. Currency
+6. Address
+7. Phone
+8. Soclial Links -> facebook, youtube, instagram, twitter
+
+Pages=>
+1. About Us
+2. Privacy Policies
+3. Returns & Refunds
+4. Terms & Conditions
