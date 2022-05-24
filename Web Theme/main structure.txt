@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="shortcut icon" href="icons/blog.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+    <title>@yield('title')</title>
+</head>
+<body>
+    <div id="main-screen">
+        <div id="navigation-bar">
+            <div id="navigation-bar-content">
+                <div id="site-name">nesternet</div>
+            </div>
+        </div>
+
+        <div id="app-body">
+            <div id="primary-app">
+                <div id="app-container">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus perspiciatis consectetur sequi ad quaerat ipsam veritatis adipisci ullam id, beatae exercitationem at ipsum ea delectus quod facilis vel obcaecati commodi.
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+    <script>
+        new Splide('.splide-for-author', {
+            perPage: 2,
+            perMove: 1,
+            autoplay: true,
+            arrows: true,
+            pagination: false,
+            rewind: true,
+            gap: '.5rem',
+
+            breakpoints: {
+                '992': {
+                    perPage: 1,
+                },
+                '768': {
+                    perPage: 3,
+                },
+                '640': {
+                    perPage: 2,
+                },
+                '480': {
+                    perPage: 2,
+                },
+            }
+        }).mount();
+    </script>
+</body>
+</html>
+
+
+@import 'HomePage/HomeMain.css';
+@import 'common.css';
+@import 'splideconf.css';
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+:root{
+    --primary-color       : #4ea9ff;
+    --secondary-color     : #1388f577;
+
+    --body-color          : #f8f8f8;
+    --div-color           : #fff;
+
+    --primary-scrollbar   : #818181a2;
+    --secondary-scrollbar : #8181813f;
+}
+
+body{
+    margin: 0;
+    animation: anim 1s;
+    font-family: 'Ubuntu', sans-serif;
+    user-select: none;
+}
+@keyframes anim {
+    0% {opacity: 0}
+}
+
+::-webkit-scrollbar {width: 8px; height: 6px;}
+::-webkit-scrollbar-thumb {
+    background: var(--primary-scrollbar); 
+    border-radius: 0px 0px 5px 5px;
+}
+
+a{
+    text-decoration: none;
+    color: var(--primary-color);
+}
+p{margin: 0px}
+
+#main-screen{
+    height:100vh; 
+    background-color: var(--body-color);
+}
+#navigation-bar{
+    height: 8%;
+    background-color: #ffffff;
+}
+#navigation-bar-content{
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+#site-name{
+    font-size: 1.44rem;
+    font-weight: bold;
+}
+
+#app-body{
+    height: 92%; 
+    overflow-y: auto;
+}
+#app-container{
+    display: flex;
+    justify-content: space-between;
+}
+#primary-app{
+    margin: 0 auto;
+    padding: 10px;
+}
+#secondary-app{
+    margin: 0 auto;
+}
+#footer-section{
+    background-color: #ffffff;
+    text-align: center;
+    font-size: 15px;
+    padding: 30px 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    ::-webkit-scrollbar {width: 4px}
+    #primary-app{
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+    #secondary-app{
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .dynamic-cursor{
+      cursor: default;
+    }
+    .splide__arrow:hover{
+        cursor: default !important;
+    }
+    .footer-section-wrapper{
+        width: 100%;
+        flex-direction: column;
+    }
+    #app-container{
+        display: block;
+    }
+    .section-one{
+        width: 100% !important;
+    }
+    .section-two{
+        width: 100% !important;
+        margin-top: 10px;
+        padding-left: 0px;
+    }
+    #banner{
+        grid-template-columns: auto auto !important;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .main-post-container{
+        display: block;
+    }
+    .main-post-section-two{
+        padding-left: 0px;
+        margin-top: 10px;
+    }
+    #banner{
+        grid-template-columns: auto;
+    }
+    #banner img:nth-child(1){
+        margin-bottom: 10px;
+    }
+    .section-one{
+        width: 65%;
+    }
+    .section-two{
+        width: 35%;
+    }    
+}
+
+@media only screen and (max-width: 1200px) {
+    #primary-app{
+        width: 90%;
+    }
+    #secondary-app{
+        width: 90%;
+    }
+}
+@media only screen and (min-width: 1200px) {
+    #primary-app{
+        width: 90%;
+    }
+    #secondary-app{
+        width: 90%;
+    }
+}
