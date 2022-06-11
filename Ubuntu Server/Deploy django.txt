@@ -1,0 +1,9 @@
+<Directory /spanel/spanel/spanel>
+		<Files wsgi.py>
+			Require all granted
+		</Files>
+</Directory>
+
+	WSGIDaemonProcess spanel python-path=/spanel/spanel python-home=/spanel/venv
+	WSGIProcessGroup spanel
+	WSGIScriptAlias / /spanel/spanel/spanel/wsgi.py

@@ -1,3 +1,5 @@
+npm init --y
+
 * Packages ->
 
 npm i express
@@ -13,12 +15,12 @@ npm i nodemon
 
 * folder structure ->
 
-npm init (package.json)
+npm init --y (package.json)
 index.js (root)
 app.js   (root)
 .env
 
-src
+app
    -> controllers
    -> models
    -> routes
