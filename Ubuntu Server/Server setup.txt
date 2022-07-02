@@ -4,76 +4,70 @@ restart: sudo service apache2 restart
 htop command to see server cpu
 
 
-root@localhost setup => 
+***root@localhost setup => 
 
-1. Open the /etc/ssh/sshd_config file with administrative privileges and change the following line:
+	1. Open the /etc/ssh/sshd_config file with administrative privileges and change the following line:
 
-FROM:
-#PermitRootLogin prohibit-password
-TO:
-PermitRootLogin yes
+	FROM:
+	#PermitRootLogin prohibit-password
+	TO:
+	PermitRootLogin yes
 
-or $ sudo sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+	or $ sudo sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
-$ sudo systemctl restart ssh
-$ sudo passwd
+	$ sudo systemctl restart ssh
+	$ sudo passwd
 
 
 PHP Setup =>
 
-https://linuxize.com/post/how-to-install-php-8-on-ubuntu-20-04/
+	https://linuxize.com/post/how-to-install-php-8-on-ubuntu-20-04/
 
-$ sudo apt update && sudo apt upgrade
-$ sudo apt install php8.0
-$ php -v
-$ sudo nano /etc/apache2/mods-enabled/dir.conf ->to prioritise php file
+	$ sudo apt update && sudo apt upgrade
+	$ sudo apt install php8.0
+	$ php -v
+	$ sudo nano /etc/apache2/mods-enabled/dir.conf ->to prioritise php file
 
-for ubuntu 20 or 18 =>
-sudo apt update
-sudo apt install lsb-release ca-certificates apt-transport-https software-properties-common -y
-sudo add-apt-repository ppa:ondrej/php
-
-
-
-php myadmin =>
-
-$ sudo apt-get install gettext
-$ sudo apt install phpmyadmin php-mbstring php-gettext
-$ sudo phpenmod mbstring 
-$ sudo systemctl restart apache2
-
+	for ubuntu 20 or 18 =>
+	$ sudo apt update
+	$ sudo apt install lsb-release ca-certificates apt-transport-https software-properties-common -y
+	$ sudo add-apt-repository ppa:ondrej/php
+	$ sudo apt install php8.0
+	$ php -v
+	$ sudo nano /etc/apache2/mods-enabled/dir.conf ->to prioritise php file
 
 
 FTP Setup =>
 
-$ sudo apt install vsftpd
-$ sudo adduser ftpuser
-$ sudo systemctl restart vsftpd
-$ sudo systemctl enable vsftpd
-$ chown -v ftpuser www/
-$ sudo ufw allow 20/tcp
-$ sudo ufw allow 21/tcp
-$ sudo ufw allow 990/tcp
-$ sudo ufw allow 4000:5000/tcp
-$ sudo ufw enable OpenSSH
-$ sudo ufw enable
+	$ sudo apt install vsftpd
+	$ sudo adduser ftpuser
+	$ sudo systemctl restart vsftpd
+	$ sudo systemctl enable vsftpd
+	$ chown -v ftpuser www/
+	$ sudo ufw allow 20/tcp
+	$ sudo ufw allow 21/tcp
+	$ sudo ufw allow 990/tcp
+	$ sudo ufw allow 4000:5000/tcp
+	$ sudo ufw enable OpenSSH
+	$ sudo ufw enable
 
 
 
 MySql =>
-https://phoenixnap.com/kb/install-mysql-ubuntu-20-04
+	https://phoenixnap.com/kb/install-mysql-ubuntu-20-04
 
-$ sudo apt upgrade
-$ sudo apt install mysql-server || sudo systemctl stop mysql || sudo apt-get purge mysql-server mysql-client mysql-common mysql-server-core-* mysql-client-core-*
-  || sudo rm -rf /etc/mysql /var/lib/mysql || sudo apt autoremove || sudo apt autoclean
-$ mysql --version
-$ sudo mysql_secure_installation
-$ sudo systemctl start mysql
-$ sudo systemctl status mysql
-$ sudo mysql -u root
-  CREATE DATABASE dbname;
-  USE dbname;
-  SHOW tables;
+	$ sudo apt upgrade
+	$ sudo apt install mysql-server || sudo systemctl stop mysql || sudo apt-get purge mysql-server mysql-client mysql-common mysql-server-core-* mysql-client-core-*
+  	|| sudo rm -rf /etc/mysql /var/lib/mysql || sudo apt autoremove || sudo apt autoclean
+	
+	$ mysql --version
+	$ sudo mysql_secure_installation
+	$ sudo systemctl start mysql
+	$ sudo systemctl status mysql
+	$ sudo mysql -u root
+  		CREATE DATABASE dbname;
+  		USE dbname;
+  		SHOW tables;
 
 insert into products(name,price) values ('Shirt for men', 600);
 
